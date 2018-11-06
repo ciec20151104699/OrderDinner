@@ -18,7 +18,7 @@
 
         <!-- 数据库驱动 -->
 
-        <property name="driverClass" value="${aliLibrary.db.driverClass}" />
+        <property name="driverClass" value="${jdbc.driver}" />
 
         <!-- 相应驱动的jdbcUrl,你懂的 -->
 
