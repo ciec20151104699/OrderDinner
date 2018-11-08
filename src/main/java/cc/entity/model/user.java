@@ -1,6 +1,6 @@
 package cc.entity.model;
 
-public class user {
+public class User {
     private Integer id;
 
     private String userName;

@@ -1,30 +1,30 @@
 package cc.entity.dao;
 
-import cc.entity.model.user;
-import cc.entity.model.userExample;
+import cc.entity.model.User;
+import cc.entity.model.UserExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
-public interface userMapper {
-    int countByExample(userExample example);
+public interface UserMapper {
+    int countByExample(UserExample example);
 
-    int deleteByExample(userExample example);
+    int deleteByExample(UserExample example);
 
     int deleteByPrimaryKey(Integer id);
 
-    int insert(user record);
+    int insert(User record);
 
-    int insertSelective(user record);
+    int insertSelective(User record);
 
-    List<user> selectByExample(userExample example);
+    List<User> selectByExample(UserExample example);
 
-    user selectByPrimaryKey(Integer id);
+    User selectByPrimaryKey(Integer id);
 
-    int updateByExampleSelective(@Param("record") user record, @Param("example") userExample example);
+    int updateByExampleSelective(@Param("record") User record, @Param("example") UserExample example);
 
-    int updateByExample(@Param("record") user record, @Param("example") userExample example);
+    int updateByExample(@Param("record") User record, @Param("example") UserExample example);
 
-    int updateByPrimaryKeySelective(user record);
+    int updateByPrimaryKeySelective(User record);
 
-    int updateByPrimaryKey(user record);
+    int updateByPrimaryKey(User record);
 }
