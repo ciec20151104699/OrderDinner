@@ -4,13 +4,14 @@ import cc.entity.model.UserMenu;
 import com.github.pagehelper.PageHelper;
 
 import java.util.List;
+import java.util.Map;
 
 public interface OrderService {
     //    查看购物车
-    List<UserMenu> findShop(Integer pageNum, Integer pageSize);
+    Map<String,List<UserMenu>> findShop(Integer pageNum, Integer pageSize,int userId);
 
     //    查看订单
-    List<UserMenu> findOrder(Integer pageNum, Integer pageSize);
+    Map<String,List<UserMenu>> findOrder(Integer pageNum, Integer pageSize,int userId);
 
     //    添加菜品
     int insertFoodKind(UserMenu userMenu);
