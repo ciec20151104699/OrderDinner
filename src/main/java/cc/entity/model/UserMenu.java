@@ -9,6 +9,10 @@ public class UserMenu {
 
     private Long updateTime;
 
+    private Integer flag;
+
+    private Long dataDay;
+
     public Integer getId() {
         return id;
     }
@@ -39,5 +43,21 @@ public class UserMenu {
 
     public void setUpdateTime(Long updateTime) {
         this.updateTime = updateTime;
+    }
+
+    public Integer getFlag() {
+        return flag;
+    }
+
+    public void setFlag(Integer flag) {
+        this.flag = flag;
+    }
+
+    public Long getDataDay() {
+        return dataDay;
+    }
+
+    public void setDataDay(Long dataDay) {
+        this.dataDay = dataDay;
     }
 }

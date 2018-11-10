@@ -343,6 +343,126 @@ public class UserMenuExample {
             addCriterion("update_time not between", value1, value2, "updateTime");
             return (Criteria) this;
         }
+
+        public Criteria andFlagIsNull() {
+            addCriterion("flag is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andFlagIsNotNull() {
+            addCriterion("flag is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andFlagEqualTo(Integer value) {
+            addCriterion("flag =", value, "flag");
+            return (Criteria) this;
+        }
+
+        public Criteria andFlagNotEqualTo(Integer value) {
+            addCriterion("flag <>", value, "flag");
+            return (Criteria) this;
+        }
+
+        public Criteria andFlagGreaterThan(Integer value) {
+            addCriterion("flag >", value, "flag");
+            return (Criteria) this;
+        }
+
+        public Criteria andFlagGreaterThanOrEqualTo(Integer value) {
+            addCriterion("flag >=", value, "flag");
+            return (Criteria) this;
+        }
+
+        public Criteria andFlagLessThan(Integer value) {
+            addCriterion("flag <", value, "flag");
+            return (Criteria) this;
+        }
+
+        public Criteria andFlagLessThanOrEqualTo(Integer value) {
+            addCriterion("flag <=", value, "flag");
+            return (Criteria) this;
+        }
+
+        public Criteria andFlagIn(List<Integer> values) {
+            addCriterion("flag in", values, "flag");
+            return (Criteria) this;
+        }
+
+        public Criteria andFlagNotIn(List<Integer> values) {
+            addCriterion("flag not in", values, "flag");
+            return (Criteria) this;
+        }
+
+        public Criteria andFlagBetween(Integer value1, Integer value2) {
+            addCriterion("flag between", value1, value2, "flag");
+            return (Criteria) this;
+        }
+
+        public Criteria andFlagNotBetween(Integer value1, Integer value2) {
+            addCriterion("flag not between", value1, value2, "flag");
+            return (Criteria) this;
+        }
+
+        public Criteria andDataDayIsNull() {
+            addCriterion("data_day is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDataDayIsNotNull() {
+            addCriterion("data_day is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDataDayEqualTo(Long value) {
+            addCriterion("data_day =", value, "dataDay");
+            return (Criteria) this;
+        }
+
+        public Criteria andDataDayNotEqualTo(Long value) {
+            addCriterion("data_day <>", value, "dataDay");
+            return (Criteria) this;
+        }
+
+        public Criteria andDataDayGreaterThan(Long value) {
+            addCriterion("data_day >", value, "dataDay");
+            return (Criteria) this;
+        }
+
+        public Criteria andDataDayGreaterThanOrEqualTo(Long value) {
+            addCriterion("data_day >=", value, "dataDay");
+            return (Criteria) this;
+        }
+
+        public Criteria andDataDayLessThan(Long value) {
+            addCriterion("data_day <", value, "dataDay");
+            return (Criteria) this;
+        }
+
+        public Criteria andDataDayLessThanOrEqualTo(Long value) {
+            addCriterion("data_day <=", value, "dataDay");
+            return (Criteria) this;
+        }
+
+        public Criteria andDataDayIn(List<Long> values) {
+            addCriterion("data_day in", values, "dataDay");
+            return (Criteria) this;
+        }
+
+        public Criteria andDataDayNotIn(List<Long> values) {
+            addCriterion("data_day not in", values, "dataDay");
+            return (Criteria) this;
+        }
+
+        public Criteria andDataDayBetween(Long value1, Long value2) {
+            addCriterion("data_day between", value1, value2, "dataDay");
+            return (Criteria) this;
+        }
+
+        public Criteria andDataDayNotBetween(Long value1, Long value2) {
+            addCriterion("data_day not between", value1, value2, "dataDay");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

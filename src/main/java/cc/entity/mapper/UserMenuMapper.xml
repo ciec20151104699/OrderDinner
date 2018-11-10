@@ -6,6 +6,8 @@
     <result column="user_id" property="userId" jdbcType="INTEGER" />
     <result column="menu_id" property="menuId" jdbcType="INTEGER" />
     <result column="update_time" property="updateTime" jdbcType="BIGINT" />
+    <result column="flag" property="flag" jdbcType="INTEGER" />
+    <result column="data_day" property="dataDay" jdbcType="BIGINT" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -66,7 +68,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, user_id, menu_id, update_time
+    id, user_id, menu_id, update_time, flag, data_day
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="cc.entity.model.UserMenuExample" >
     select
@@ -101,9 +103,11 @@
   </delete>
   <insert id="insert" parameterType="cc.entity.model.UserMenu" >
     insert into user_menu (id, user_id, menu_id, 
-      update_time)
+      update_time, flag, data_day
+      )
     values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{menuId,jdbcType=INTEGER}, 
-      #{updateTime,jdbcType=BIGINT})
+      #{updateTime,jdbcType=BIGINT}, #{flag,jdbcType=INTEGER}, #{dataDay,jdbcType=BIGINT}
+      )
   </insert>
   <insert id="insertSelective" parameterType="cc.entity.model.UserMenu" >
     insert into user_menu
@@ -120,6 +124,12 @@
       <if test="updateTime != null" >
         update_time,
       </if>
+      <if test="flag != null" >
+        flag,
+      </if>
+      <if test="dataDay != null" >
+        data_day,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -133,6 +143,12 @@
       </if>
       <if test="updateTime != null" >
         #{updateTime,jdbcType=BIGINT},
+      </if>
+      <if test="flag != null" >
+        #{flag,jdbcType=INTEGER},
+      </if>
+      <if test="dataDay != null" >
+        #{dataDay,jdbcType=BIGINT},
       </if>
     </trim>
   </insert>
@@ -157,6 +173,12 @@
       <if test="record.updateTime != null" >
         update_time = #{record.updateTime,jdbcType=BIGINT},
       </if>
+      <if test="record.flag != null" >
+        flag = #{record.flag,jdbcType=INTEGER},
+      </if>
+      <if test="record.dataDay != null" >
+        data_day = #{record.dataDay,jdbcType=BIGINT},
+      </if>
     </set>
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -167,7 +189,9 @@
     set id = #{record.id,jdbcType=INTEGER},
       user_id = #{record.userId,jdbcType=INTEGER},
       menu_id = #{record.menuId,jdbcType=INTEGER},
-      update_time = #{record.updateTime,jdbcType=BIGINT}
+      update_time = #{record.updateTime,jdbcType=BIGINT},
+      flag = #{record.flag,jdbcType=INTEGER},
+      data_day = #{record.dataDay,jdbcType=BIGINT}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -184,6 +208,12 @@
       <if test="updateTime != null" >
         update_time = #{updateTime,jdbcType=BIGINT},
       </if>
+      <if test="flag != null" >
+        flag = #{flag,jdbcType=INTEGER},
+      </if>
+      <if test="dataDay != null" >
+        data_day = #{dataDay,jdbcType=BIGINT},
+      </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
@@ -191,7 +221,9 @@
     update user_menu
     set user_id = #{userId,jdbcType=INTEGER},
       menu_id = #{menuId,jdbcType=INTEGER},
-      update_time = #{updateTime,jdbcType=BIGINT}
+      update_time = #{updateTime,jdbcType=BIGINT},
+      flag = #{flag,jdbcType=INTEGER},
+      data_day = #{dataDay,jdbcType=BIGINT}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>
