@@ -13,6 +13,6 @@ public interface MenuService {
 
     Menu selectMenuById(int id);
 
-    List<Menu> menuList(int pageSize,int pageNum);
+    List<Menu> menuList(int pageSize,int pageNum,int flag);
 
 }

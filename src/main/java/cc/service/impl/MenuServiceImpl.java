@@ -8,8 +8,6 @@ import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.xml.ws.Action;
-import javax.xml.ws.ServiceMode;
 import java.util.List;
 @Service
 public class MenuServiceImpl implements MenuService {
@@ -38,9 +36,10 @@ public class MenuServiceImpl implements MenuService {
     }
 
     @Override
-    public List<Menu> menuList(int pageSize, int pageNum) {
+    public List<Menu> menuList(int pageSize, int pageNum,int flag) {
         PageHelper.startPage(pageNum,pageSize);
         MenuExample menuExample = new MenuExample();
+        menuExample.createCriteria().andFlagEqualTo(flag);
         List<Menu> menuList = menuMapper.selectByExample(menuExample);
         return menuList;
     }

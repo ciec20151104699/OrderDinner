@@ -11,6 +11,8 @@ public class Menu {
 
     private Long updateTime;
 
+    private Integer flag;
+
     public Integer getId() {
         return id;
     }
@@ -49,5 +51,13 @@ public class Menu {
 
     public void setUpdateTime(Long updateTime) {
         this.updateTime = updateTime;
+    }
+
+    public Integer getFlag() {
+        return flag;
+    }
+
+    public void setFlag(Integer flag) {
+        this.flag = flag;
     }
 }

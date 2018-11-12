@@ -29,6 +29,7 @@ public class UserController {
         if (user==null){
             ResultEntity.errorEntity("用户名或密码错误");
         }
+        request.getSession().setAttribute("ussr",user);
         return ResultEntity.success(user);
     }
 
@@ -51,5 +52,5 @@ public class UserController {
         userService.registerUser(user);
         return ResultEntity.success("");
     }
-    
+
 }
