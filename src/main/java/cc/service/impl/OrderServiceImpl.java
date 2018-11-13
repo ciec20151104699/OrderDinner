@@ -62,7 +62,7 @@ public class OrderServiceImpl implements OrderService{
     @Override
     public int finshOrder(Long time) {
         UserMenuExample userMenuExample = new UserMenuExample();
-        userMenuExample.createCriteria().andDataDayEqualTo(time);
+//        userMenuExample.createCriteria().andDataDayEqualTo(time);
         UserMenu userMenu = new UserMenu();
         userMenu.setFlag(2);
         return userMenuMapper.updateByExampleSelective(userMenu,userMenuExample);
