@@ -29,9 +29,9 @@
         </tx:attributes>
     </tx:advice>
     <!-- 切面 -->
-    <aop:config>
-        <aop:advisor advice-ref="txAdvice"
-                     pointcut="execution(* manage.service.*.*(..))"/>
-        <!-- 具体service包的路径取决于你新建的java代码的service层包  -->
-    </aop:config>
+    <!--<aop:config>-->
+        <!--<aop:advisor advice-ref="txAdvice"-->
+                     <!--pointcut="execution(* manage.service.*.*(..))"/>-->
+        <!--&lt;!&ndash; 具体service包的路径取决于你新建的java代码的service层包  &ndash;&gt;-->
+    <!--</aop:config>-->
 </beans>

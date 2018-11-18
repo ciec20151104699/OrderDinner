@@ -1,0 +1,15 @@
+html,body{width: 100%; overflow-x:hidden; padding-bottom:60px;  }
+.model_wrap{ width: 100%;float: left; }
+.model_item{ width:100%; line-height: 50px; float: left; padding:0 40px; box-sizing: border-box }
+.model_item label{ float: left; display: inline-block; width: 140px; height: 20px; line-height: 20px; margin-top: 15px;}
+.model_item input[type="text"],.model_item select,.model_item textarea{ display: inline-block; width: 400px;
+    border:1px solid #ccc; box-sizing: border-box;
+    height: 30px; line-height: 30px; padding: 0 14px; border-radius:3px;  margin-top: 10px;}
+.model_item textarea{ resize: none; height: 140px; margin-top: 15px;}
+.model_btn{ position: fixed;bottom: 0;left: 0; height: 60px; background: #fff;}
+.model_btn a{ width: 60px; margin-top: 18px; height: 24px; padding:0; line-height: 24px; text-align: center;float: right; }
+.model_item .file_pic{ width: 70px; height: 26px; line-height: 26px; margin-top: 12px; display: inline-block; text-align: center;
+                    position: relative; border: 1px solid #ff6500; color: #ff6500;float: left; margin-left:326px; cursor: pointer;  border-radius: 3px;
+    }
+.model_item .file_pic input{position: absolute; cursor: pointer; left: -100px; top:-100px; height: 200px; width: 200px; opacity: 0; background: rgba(255,255,255,0) }
+.model_item img{width: 400px; margin-left: 140px; margin-top: 20px; border: none;}
