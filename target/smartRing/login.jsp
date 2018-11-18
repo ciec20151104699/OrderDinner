@@ -1,11 +1,14 @@
 <!DOCTYPE html>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="basePath" value="${pageContext.request.contextPath}"/>
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>登录运维系统</title>
     <meta name="description" content="">
     <meta name="author" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <link rel="stylesheet" href="plugins/common/common.css">
-    <link rel="stylesheet" media="screen" href="plugins/particles/style.css">
+    <link rel="stylesheet" href="${basePath}/plugins/common/common.css">
+    <link rel="stylesheet" media="screen" href="${basePath}/plugins/particles/style.css">
 
     <script src="plugins/common/jquery.js"></script>
     <style>
@@ -32,13 +35,13 @@
     订餐管理平台
 </div>
 <div class="footer" style="background: transparent;">技术支持&copy;内蒙古师范大学</div>
-<script src="plugins/particles/particles.min.js"></script>
-<script src="plugins/particles/app.js"></script>
-<script src="plugins/particles/stats.js"></script>
+<script src="${basePath}/plugins/particles/particles.min.js "></script>
+<script src="${basePath}/plugins/particles/app.js"></script>
+<script src="${basePath}/plugins/particles/stats.js"></script>
 <script>
     function login(){
         alert("欢迎访问！！")
-        location.href="index.html?cid=1"
+        location.href="index.jsp"
     }
 </script>
 

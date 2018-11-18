@@ -1,6 +1,8 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" href="plugins/common/common.css" />
@@ -11,7 +13,7 @@
         .inner{ width: 1200px; height: 100%; margin: 0 auto; }
         header .logo{ width:30px; float: left; height: 30px;line-height: 30px; margin-top:10px;  font-size: 18px; color: #fff; font-family: "KAITI"; text-align: center;border: 2px solid #fff; border-radius: 50%; }
         .user ,.log_msg{float: right; color: #fff;}
-        .user a.log_msg a{color: #fff;}
+        .user span.log_msg span{color: #fff;}
         .log_msg a{padding:  2px 12px;color: #fff; display: inline-block;}
         .search { height: 70px; width: 100%;  margin: 20px 0 0 0;}
         .search .inner{background: #fff;}
@@ -64,13 +66,13 @@
         <div class="logo">订</div>
         <div class="user">
             [
-            <a href="#">登陆</a>
+            <span onclick="loginView()">登陆</span>
             |
-            <a href="#">注册</a>
+            <a span="#">注册</a>
             ]
         </div>
         <div class="log_msg">
-            <a href="myOrder.html">我的订单</a>|
+            <a href="myOrder.jsp">我的订单</a>|
             <a href="">管理员</a>|
             <a href="">退出</a>
         </div>
@@ -107,14 +109,25 @@
 
 </div>
 <script>
-    let login=true;
-    if(login==true){
-        $(".log_msg").show();
-        $(".user").hide();
-    }else{
-        $(".log_msg").hide();
-        $(".user").show();
+    function getContextPath(){
+        var pathName = document.location.pathname;
+        var index = pathName.substr(1).indexOf("/");
+        var result = pathName.substr(0,index+1);
+        return result;
     }
+
+
+    function loginView() {
+        window.location.href=getContextPath()+"/user/login/index";
+    }
+    // let login=true;
+    // if(login==true){
+    //     $(".log_msg").show();
+    //     $(".user").hide();
+    // }else{
+    //     $(".log_msg").hide();
+    //     $(".user").show();
+    // }
     let counter=0;
     let typeData=[
         {id:1,

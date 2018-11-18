@@ -6,11 +6,10 @@ import cc.utils.ResultEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
-import java.util.List;
 
 @Controller
 @RequestMapping("/user")
@@ -18,7 +17,14 @@ public class UserController {
     @Resource
     UserService userService;
 
-    @RequestMapping("/login/index")
+    @RequestMapping(value = "/login/index",method = RequestMethod.GET)
+    public String  loginIndexView(HttpServletRequest request,Model model){
+        System.out.println("123");
+        return "/login";
+    }
+
+
+    @RequestMapping(value = "/login/index",method = RequestMethod.POST)
     public ResultEntity<User> loginIndex(HttpServletRequest request,Model model){
         String username = request.getParameter("username");
         String password = request.getParameter("password");

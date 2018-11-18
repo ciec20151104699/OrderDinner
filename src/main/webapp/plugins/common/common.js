@@ -257,7 +257,7 @@ function mode_view_edit(title,url,height,data,obj,func,func1){
 function  isLogin(str) {
     $.get(str,function(data){
         if(data.substring(0,9)==="<!--登录-->"){
-            window.location.href="/html/login.html";
+            window.location.href="/login.jsp";
             window.location.reload();
             return 0;
         }else{
@@ -269,7 +269,7 @@ function getView(str,boxName){
     $(boxName).html("");
     $.get(str,function(data){
         if(data.substring(0,9)==="<!--登录-->"){
-            window.location.href="/html/login.html"
+            window.location.href="/login.jsp"
             window.location.reload();
         }else{
             $(boxName).html(data);

@@ -40,7 +40,7 @@
 <script>
     function login(){
         alert("欢迎访问！！")
-        location.href="index.html?cid=1"
+        location.href="index.jsp"
     }
 </script>
 

@@ -75,4 +75,5 @@
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <property name="basePackage" value="cc.entity.dao" /><!-- 具体dao层包的位置在哪，视你新建的dao层java包而定 -->
     </bean>
+
 </beans>
