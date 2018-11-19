@@ -5,12 +5,10 @@ import cc.entity.model.UserMenu;
 import cc.entity.model.UserMenuExample;
 import cc.service.OrderService;
 import cc.utils.DateUtils;
-import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 @Service
@@ -20,7 +18,7 @@ public class OrderServiceImpl implements OrderService{
     UserMenuMapper userMenuMapper;
 
     @Override
-    public Map<String, List<UserMenu>> findShop(Integer pageNum, Integer pageSize,int userId) {
+    public Map<String, List<UserMenu>> findShop(Integer pageNum, Integer pageSize, int userId) {
         UserMenuExample userMenuExample = new UserMenuExample();
         userMenuExample.createCriteria().andUserIdEqualTo(userId).andFlagEqualTo(2);
         List<UserMenu> menuList = userMenuMapper.selectByExample(userMenuExample);

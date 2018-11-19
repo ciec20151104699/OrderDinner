@@ -22,10 +22,14 @@ public class UserController {
         System.out.println("123");
         return "/login";
     }
-
+    @RequestMapping(value = "/register",method = RequestMethod.GET)
+    public String  register(HttpServletRequest request,Model model){
+        System.out.println("123");
+        return "/register";
+    }
 
     @RequestMapping(value = "/login/index",method = RequestMethod.POST)
-    public ResultEntity<User> loginIndex(HttpServletRequest request,Model model){
+    public ResultEntity<User> loginIndex(HttpServletRequest request, Model model){
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         if (username==null||null==password){

@@ -4,7 +4,7 @@ import cc.entity.model.User;
 
 public interface UserService {
 //    登陆
-    User loginUserByPasswordAndUserName(String name ,String password);
+    User loginUserByPasswordAndUserName(String name , String password);
 //    注册
     int registerUser(User user);
 

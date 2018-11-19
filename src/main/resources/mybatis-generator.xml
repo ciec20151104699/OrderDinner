@@ -34,13 +34,13 @@
 
 
 
-        <!--<table tableName="user" domainObjectName="User"-->
-        <!--enableCountByExample="true"-->
-        <!--enableUpdateByExample="true"-->
-        <!--enableDeleteByExample="true"-->
-        <!--enableSelectByExample="true"-->
-        <!--selectByExampleQueryId="true">-->
-        <!--</table>-->
+        <table tableName="user" domainObjectName="User"
+        enableCountByExample="true"
+        enableUpdateByExample="true"
+        enableDeleteByExample="true"
+        enableSelectByExample="true"
+        selectByExampleQueryId="true">
+        </table>
         <table tableName="menu" domainObjectName="Menu"
                enableCountByExample="true"
                enableUpdateByExample="true"
@@ -49,12 +49,12 @@
                selectByExampleQueryId="true">
         </table>
 
-        <!--<table tableName="user_menu" domainObjectName="UserMenu"-->
-               <!--enableCountByExample="true"-->
-               <!--enableUpdateByExample="true"-->
-               <!--enableDeleteByExample="true"-->
-               <!--enableSelectByExample="true"-->
-               <!--selectByExampleQueryId="true">-->
-        <!--</table>-->
+        <table tableName="user_menu" domainObjectName="UserMenu"
+               enableCountByExample="true"
+               enableUpdateByExample="true"
+               enableDeleteByExample="true"
+               enableSelectByExample="true"
+               selectByExampleQueryId="true">
+        </table>
     </context>
 </generatorConfiguration>

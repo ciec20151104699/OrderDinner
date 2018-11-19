@@ -64,7 +64,7 @@ public class ResultEntity<T> {
     }
     public static ResultEntity errorEntity(String msg) {
         ResultEntity resultEntity = new ResultEntity();
-        resultEntity.setCode(0);
+        resultEntity.setCode(-1);
         resultEntity.setMsg(msg);
         return resultEntity;
 

@@ -1,13 +1,16 @@
 <!DOCTYPE html>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="basePath" value="${pageContext.request.contextPath}"/>
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>登录运维系统</title>
     <meta name="description" content="">
     <meta name="author" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <link rel="stylesheet" href="plugins/common/common.css">
-    <link rel="stylesheet" media="screen" href="plugins/particles/style.css">
+    <link rel="stylesheet" href="${basePath}/plugins/common/common.css">
+    <link rel="stylesheet" media="screen" href="${basePath}/plugins/particles/style.css">
 
-    <script src="plugins/common/jquery.js"></script>
+    <script src="${basePath}/plugins/common/jquery.js"></script>
     <style>
         .logos{ position: absolute; left:20px; font-weight: 600;color: #fff; top:5px; height: 40px; line-height: 40px; font-size: 24px; font-family: KAITI;}
         .register{ width:360px; height: 360px;position: absolute;background:rgba(255,255,255,0.3);
@@ -34,13 +37,21 @@
 <div class="logos">
     订餐管理平台
 </div>
-<script src="plugins/particles/particles.min.js"></script>
-<script src="plugins/particles/app.js"></script>
-<script src="plugins/particles/stats.js"></script>
+<script src="${basePath}/plugins/particles/particles.min.js"></script>
+<script src="${basePath}/plugins/particles/app.js"></script>
+<script src="${basePath}/plugins/particles/stats.js"></script>
 <script>
     function login(){
-        alert("欢迎访问！！")
-        location.href="index.jsp"
+        var username = $("#username").val();
+        var password = $("#password").val();
+        $.post("${basePath}/user/register/user",{password:password,username:username},function (result) {
+            var code = result.code;
+            if (0 == code) {
+                window.location.href="${basePath}/user/login/index";
+            }else{
+                layer.msg();
+            }
+        })
     }
 </script>
 

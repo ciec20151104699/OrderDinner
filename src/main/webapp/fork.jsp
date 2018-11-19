@@ -1,12 +1,14 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="basePath" value="${pageContext.request.contextPath}"/>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" href="plugins/common/common.css" />
-    <script src="plugins/common/jquery.js"></script>
+    <link rel="stylesheet" href="${basePath}/plugins/common/common.css" />
+    <script src="${basePath}/plugins/common/jquery.js"></script>
     <style>
         body{background: #eee; color: #666;}
         header{ width: 100%; height: 50px;display: block; line-height: 50px; margin: 0; background: rgb(255, 178, 64);}
@@ -68,7 +70,7 @@
             [
             <span onclick="loginView()">登陆</span>
             |
-            <a span="#">注册</a>
+            <a href="${basePath}/user/register">注册</a>
             ]
         </div>
         <div class="log_msg">

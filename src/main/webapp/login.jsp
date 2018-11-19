@@ -40,8 +40,18 @@
 <script src="${basePath}/plugins/particles/stats.js"></script>
 <script>
     function login(){
-        alert("欢迎访问！！")
-        location.href="index.jsp"
+        var username = $("#username").val();
+        var password = $("#password").val();
+        $.post("${basePath}/user/login/index",{password:password,username:username},function (result) {
+            var code = result.code;
+            if (0 == code) {
+                window.location.href = "index.jsp"
+            }else{
+                layer.msg();
+            }
+        })
+        // alert("欢迎访问！！")
+
     }
 </script>
 
