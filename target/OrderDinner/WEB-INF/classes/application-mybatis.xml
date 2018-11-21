@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:context="http://www.springframework.org/schema/context" xmlns:p="http://www.springframework.org/schema/p"
-       xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
-   http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
-   http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
-   http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd">
+       xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd"
+       default-lazy-init="true">
 
-    <!-- 加载配置文件 -->
+    <description>Spring-Mybatis</description>
+
     <context:property-placeholder location="classpath:/*.properties" />
     <!-- 数据库连接池 -->
 
@@ -66,14 +67,39 @@
 
     </bean>
 
-    <!-- 让spring管理sqlSessionFactory -->
+    <!-- spring-MyBatis -->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-        <property name="dataSource" ref="dataSource" />
-        <!-- 加载mybatis的全局配置文件 -->
-        <property name="configLocation" value="classpath:sqlMapConfig.xml" />
+        <property name="dataSource" ref="dataSource"/>
+        <!-- scan xml file -->
+        <!--<property name="mapperLocations" value="classpath:cc/gukeer/smartRing/persistence/mapping/*.xml,-->
+        <!--classpath:cc/gukeer/attendance/persistence/mapping/*.xml"></property>-->
+
+        <property name="mapperLocations">
+            <list>
+                <value>classpath:cc/entity/mapper/*.xml</value>
+
+            </list>
+        </property>
+
+        <property name="typeAliasesPackage" value="cc.entity.model"/>
+
+        <property name="configLocation" value="classpath:mybatis-config.xml"></property>
     </bean>
+
+    <!--create an sqlSession Object-->
+    <bean id="sqlSessionTemple" class="org.mybatis.spring.SqlSessionTemplate">
+        <constructor-arg index="0" ref="sqlSessionFactory"/>
+    </bean>
+
+    <!-- mysql mapping scan -->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="cc.entity.dao" /><!-- 具体dao层包的位置在哪，视你新建的dao层java包而定 -->
+        <property name="basePackage" value="cc.entity.dao"/>
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
     </bean>
+
+
+    <context:component-scan base-package="cc.entity.*"/>
+
+
 
 </beans>

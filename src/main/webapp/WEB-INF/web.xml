@@ -38,7 +38,7 @@
   <!-- 初始化spring容器 -->
   <context-param>
     <param-name>contextConfigLocation</param-name>
-    <param-value>classpath:applicationContext-*.xml</param-value>
+    <param-value>classpath:application-*.xml</param-value>
   </context-param>
   <listener>
     <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
@@ -72,7 +72,7 @@
     <!-- spring-mvc的配置文件默认在：WEB-INF/servlet的name+"-servlet.xml" -->
     <init-param>
       <param-name>contextConfigLocation</param-name>
-      <param-value>classpath:/spring-mvc.xml</param-value>
+      <param-value>classpath:/application-springMVC.xml</param-value>
     </init-param>
     <load-on-startup>1</load-on-startup>
   </servlet>

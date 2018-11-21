@@ -9,8 +9,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link rel="stylesheet" href="${basePath}/plugins/common/common.css">
     <link rel="stylesheet" media="screen" href="${basePath}/plugins/particles/style.css">
+    <link rel="stylesheet" media="screen" href="${basePath}/plugins/layui/css/modules/layer/default/layer.css">
 
-    <script src="plugins/common/jquery.js"></script>
+    <script src="${basePath}/plugins/common/jquery.js"></script>
     <style>
         .logos{ position: absolute; left:20px; font-weight: 600;color: #fff; top:5px; height: 40px; line-height: 40px; font-size: 24px; font-family: KAITI;}
         .login{ width:360px; height: 300px;position: absolute;background:rgba(255,255,255,0.3); right:50px; top:50%;margin-top:-200px; border-radius: 10px; }
@@ -38,6 +39,7 @@
 <script src="${basePath}/plugins/particles/particles.min.js "></script>
 <script src="${basePath}/plugins/particles/app.js"></script>
 <script src="${basePath}/plugins/particles/stats.js"></script>
+<script src="${basePath}/plugins/layui/lay/modules/layer.js"></script>
 <script>
     function login(){
         var username = $("#username").val();
@@ -45,9 +47,9 @@
         $.post("${basePath}/user/login/index",{password:password,username:username},function (result) {
             var code = result.code;
             if (0 == code) {
-                window.location.href = "index.jsp"
+                window.location.href = "${basePath}/fork.jsp"
             }else{
-                layer.msg();
+                layer.msg("用户名密码错误");
             }
         })
         // alert("欢迎访问！！")

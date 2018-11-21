@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -27,22 +28,22 @@ public class UserController {
         System.out.println("123");
         return "/register";
     }
-
+    @ResponseBody
     @RequestMapping(value = "/login/index",method = RequestMethod.POST)
     public ResultEntity<User> loginIndex(HttpServletRequest request, Model model){
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         if (username==null||null==password){
-            ResultEntity.errorEntity("用户名或密码为空");
+           return ResultEntity.errorEntity("用户名或密码为空");
         }
         User user = userService.loginUserByPasswordAndUserName(username,password);
         if (user==null){
-            ResultEntity.errorEntity("用户名或密码错误");
+            return ResultEntity.errorEntity("用户名或密码错误");
         }
         request.getSession().setAttribute("ussr",user);
         return ResultEntity.success(user);
     }
-
+    @ResponseBody
     @RequestMapping("/register/user")
     public ResultEntity<String> registerUser(HttpServletRequest request,Model model){
         String username = request.getParameter("username");
@@ -59,6 +60,7 @@ public class UserController {
         user.setSex(sex);
         user.setUserName(username);
         user.setPassword(password);
+        user.setFlag("1");
         userService.registerUser(user);
         return ResultEntity.success("");
     }

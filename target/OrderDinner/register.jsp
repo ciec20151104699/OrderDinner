@@ -13,7 +13,7 @@
     <script src="${basePath}/plugins/common/jquery.js"></script>
     <style>
         .logos{ position: absolute; left:20px; font-weight: 600;color: #fff; top:5px; height: 40px; line-height: 40px; font-size: 24px; font-family: KAITI;}
-        .register{ width:360px; height: 360px;position: absolute;background:rgba(255,255,255,0.3);
+        .register{ width:360px; height: 560px;position: absolute;background:rgba(255,255,255,0.3);
             left: 50%; margin-left: -180px;
             top:50%; margin-top: -180px; border-radius: 10px; }
         .register h1{ width: 100%;text-align: center; height: 50px; line-height: 50px;  font-size: 24px; color: #fff; }
@@ -30,6 +30,8 @@
     <h1>用户注册</h1>
     <p><label>账　　号</label><input type="text" value="" placeholder="请输入用户名" id="username"></p>
     <p><label>密　　码</label><input type="password" value="" placeholder="请输入注册密码"  id="password"></p>
+    <p><label>性　　别</label><input type="radio" value="1" placeholder=""  name="sex">男<input type="radio" value="0" name="sex" >女</p>
+    <p><label>昵    称</label><input type="text" value="" placeholder="请输入昵称"  id="name"></p>
     <p><label>确认密码</label><input type="password" value="" placeholder="请输入注册密码"  id="passwords"></p>
     <p><button onclick="login()">注册</button></p>
 </div>
@@ -40,16 +42,25 @@
 <script src="${basePath}/plugins/particles/particles.min.js"></script>
 <script src="${basePath}/plugins/particles/app.js"></script>
 <script src="${basePath}/plugins/particles/stats.js"></script>
+<script src="${basePath}/plugins/layui/lay/modules/layer.js"></script>
 <script>
     function login(){
         var username = $("#username").val();
         var password = $("#password").val();
-        $.post("${basePath}/user/register/user",{password:password,username:username},function (result) {
+        var sex =  $('input[name="sex"]:checked').val();
+        var name = $("#name").val();
+        if (username==""||password==""||sex==undefined||name==""){
+            layer.msg("请输入必填项")
+            return;
+        }
+        $.post("${basePath}/user/register/user",{password:password,
+            username:username,sex:sex,
+            name:name},function (result) {
             var code = result.code;
             if (0 == code) {
                 window.location.href="${basePath}/user/login/index";
             }else{
-                layer.msg();
+                layer.msg("用户名重复");
             }
         })
     }

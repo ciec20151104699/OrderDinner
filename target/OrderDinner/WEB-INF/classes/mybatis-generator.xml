@@ -5,12 +5,26 @@
 
 <generatorConfiguration>
     <classPathEntry
-            location="D:/software/mysql-connector-java-6.0.6.jar"/>
+            location="E:/mysql-connector-java-5.1.38.jar"/>
     <context id="my" targetRuntime="MyBatis3">
+
+        <!-- 抑制警告 -->
+        <property name="suppressTypeWarnings" value="true"/>
+
+        <!-- generate entity时，生成hashcode和equals方法 -->
+        <plugin type="org.mybatis.generator.plugins.EqualsHashCodePlugin"/>
+        <!-- generate entity时，生成serialVersionUID -->
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
+        <!-- 这个插件只会增加字符串字段映射到一个JDBC字符的方法 -->
+        <plugin type="org.mybatis.generator.plugins.CaseInsensitiveLikePlugin"/>
+        <!-- genenat entity时,生成toString -->
+        <plugin type="org.mybatis.generator.plugins.ToStringPlugin"/>
+
+        <!-- 抑制生成代码的注释 -->
         <commentGenerator>
-            <property name="suppressDate" value="false"/>
             <property name="suppressAllComments" value="true"/>
         </commentGenerator>
+
 
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
                         connectionURL="jdbc:mysql://localhost:3306/order_dinner?characterEncoding=utf-8" userId="root"
@@ -34,20 +48,20 @@
 
 
 
-        <table tableName="user" domainObjectName="User"
-        enableCountByExample="true"
-        enableUpdateByExample="true"
-        enableDeleteByExample="true"
-        enableSelectByExample="true"
-        selectByExampleQueryId="true">
-        </table>
-        <table tableName="menu" domainObjectName="Menu"
-               enableCountByExample="true"
-               enableUpdateByExample="true"
-               enableDeleteByExample="true"
-               enableSelectByExample="true"
-               selectByExampleQueryId="true">
-        </table>
+        <!--<table tableName="user" domainObjectName="User"-->
+        <!--enableCountByExample="true"-->
+        <!--enableUpdateByExample="true"-->
+        <!--enableDeleteByExample="true"-->
+        <!--enableSelectByExample="true"-->
+        <!--selectByExampleQueryId="true">-->
+        <!--</table>-->
+        <!--<table tableName="menu" domainObjectName="Menu"-->
+               <!--enableCountByExample="true"-->
+               <!--enableUpdateByExample="true"-->
+               <!--enableDeleteByExample="true"-->
+               <!--enableSelectByExample="true"-->
+               <!--selectByExampleQueryId="true">-->
+        <!--</table>-->
 
         <table tableName="user_menu" domainObjectName="UserMenu"
                enableCountByExample="true"
