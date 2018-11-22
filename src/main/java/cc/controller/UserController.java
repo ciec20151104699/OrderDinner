@@ -40,7 +40,7 @@ public class UserController {
         if (user==null){
             return ResultEntity.errorEntity("用户名或密码错误");
         }
-        request.getSession().setAttribute("ussr",user);
+        request.getSession().setAttribute("user",user);
         return ResultEntity.success(user);
     }
     @ResponseBody

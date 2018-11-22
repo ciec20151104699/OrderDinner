@@ -27,8 +27,8 @@
 <div id="particles-js"><canvas class="particles-js-canvas-el"  style="width: 100%; height: 100%;"></canvas></div>
 <div class="login">
     <h1>用户登录</h1>
-    <p><label>账　号</label><input type="text" value="点击登录" id="username"></p>
-    <p><label>密　码</label><input type="password" value="123456" id="password"></p>
+    <p><label>账　号</label><input type="text" placeholder="请输入账号" id="username"></p>
+    <p><label>密　码</label><input type="password" placeholder="请输入密码" id="password"></p>
     <p><button onclick="login()">登录</button></p>
 </div>
 
