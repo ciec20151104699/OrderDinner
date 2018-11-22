@@ -1,15 +1,18 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="basePath" value="${pageContext.request.contextPath}"/>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" href="plugins/common/common.css" />
-    <link rel="stylesheet" href="plugins/layui/css/layui.css" />
-    <script src="plugins/common/jquery.js"></script>
-    <script src="plugins/common/common.js"></script>
-    <script src="plugins/layui/layui.js"></script>
+    <link rel="stylesheet" href="${basePath}/plugins/common/common.css" />
+    <link rel="stylesheet" href="${basePath}/plugins/layui/css/layui.css" />
+    <script src="${basePath}/plugins/common/jquery.js"></script>
+    <script src="${basePath}/plugins/common/common.js"></script>
+    <script src="${basePath}/plugins/layui/layui.js"></script>
 
-    <script src="plugins/menu/menu.js"></script>
+    <script src="${basePath}/plugins/menu/menu.js"></script>
     <style>
 
         header {padding: 0 40px; box-sizing: border-box;}
@@ -29,13 +32,13 @@
             var menuArry = [];
             menuArry=[
                 {id:1,name:"店铺管理",pId:0},
-                {id:3,name:"类别管理",pId:1,menuUrl:"admin/shop/type/show.html"},
-                {id:2,name:"菜品管理",pId:1,menuUrl:"admin/shop/cook/show.html"},
+                {id:3,name:"类别管理",pId:1,menuUrl:"admin/shop/type/show.jsp"},
+                {id:2,name:"菜品管理",pId:1,menuUrl:"admin/shop/cook/show.jsp"},
                 {id:4,name:"订单管理",pId:0},
-                {id:5,name:"已完成",pId:4,menuUrl:"admin/order/ok/show.html"},
-                {id:6,name:"未完成",pId:4,menuUrl:"admin/order/ok/show.html"},
+                {id:5,name:"已完成",pId:4,menuUrl:"admin/order/ok/show.jsp"},
+                {id:6,name:"未完成",pId:4,menuUrl:"admin/order/ok/show.jsp"},
                 {id:9,name:"系统管理",pId:0},
-                {id:11,name:"用户管理",pId:9,menuUrl:"admin/system/user/show.html"},
+                {id:11,name:"用户管理",pId:9,menuUrl:"admin/system/user/show.jsp"},
 
             ]
             var strUrl="";

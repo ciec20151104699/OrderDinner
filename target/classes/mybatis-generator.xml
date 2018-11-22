@@ -63,12 +63,20 @@
                <!--selectByExampleQueryId="true">-->
         <!--</table>-->
 
-        <table tableName="user_menu" domainObjectName="UserMenu"
-               enableCountByExample="true"
-               enableUpdateByExample="true"
-               enableDeleteByExample="true"
-               enableSelectByExample="true"
-               selectByExampleQueryId="true">
+        <!--<table tableName="user_menu" domainObjectName="UserMenu"-->
+               <!--enableCountByExample="true"-->
+               <!--enableUpdateByExample="true"-->
+               <!--enableDeleteByExample="true"-->
+               <!--enableSelectByExample="true"-->
+               <!--selectByExampleQueryId="true">-->
+        <!--</table>-->
+
+        <table tableName="menu_type" domainObjectName="MenuType"
+        enableCountByExample="true"
+        enableUpdateByExample="true"
+        enableDeleteByExample="true"
+        enableSelectByExample="true"
+        selectByExampleQueryId="true">
         </table>
     </context>
 </generatorConfiguration>

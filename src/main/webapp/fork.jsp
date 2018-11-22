@@ -353,7 +353,7 @@
         <c:if test="${sessionScope.user==null}">
             <div class="user">
                 [
-                <span onclick="loginView()">登陆</span>
+                <a onclick="loginView()">登陆</a>
                 |
                 <a href="${basePath}/user/register">注册</a>
                 ]

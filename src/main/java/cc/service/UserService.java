@@ -1,6 +1,8 @@
 package cc.service;
 
 import cc.entity.model.User;
+import com.github.pagehelper.PageInfo;
+import org.omg.PortableInterceptor.INACTIVE;
 
 public interface UserService {
 //    登陆
@@ -10,4 +12,6 @@ public interface UserService {
 
 //    检查用户名
     boolean checkUerName(String name);
+
+    PageInfo<User> userPageInfo(Integer pageNum,Integer pageSize,String name);
 }

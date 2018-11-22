@@ -1,11 +1,16 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="basePath" value="${pageContext.request.contextPath}"/>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" href="/fork/plugins/common/common.css" />
-
-    <link href="/fork/css/model_view.css" rel="stylesheet" />
+    <link rel="stylesheet" href="${basePath}/plugins/common/common.css" />
+    <link rel="stylesheet" media="screen" href="${basePath}/plugins/layui/css/modules/layer/default/layer.css">
+    <link href="${basePath}/css/model_view.css" rel="stylesheet" />
+    <script src="${basePath}/plugins/common/jquery.js"></script>
+    <script src="${basePath}/plugins/layui/lay/modules/layer.js"></script>
 </head>
 <body>
 <div class="model_wrap">
@@ -47,14 +52,14 @@
 
 
         </div>
-        <div class="model_item">
-            <label>
-                备注：
-            </label>
-            <textarea id="note" name="note" placeholder="请输入备注..."></textarea>
-        </div>
+        <%--<div class="model_item">--%>
+            <%--<label>--%>
+                <%--备注：--%>
+            <%--</label>--%>
+            <%--<textarea id="note" name="note" placeholder="请输入备注..."></textarea>--%>
+        <%--</div>--%>
         <div class="model_item model_btn">
-            <a href="javascript:void(0);"  class="btn_base btn_sure" >确认
+            <a href="javascript:void(0);"  class="btn_base btn_sure" onclick="insertMenu()">确认
 
             </a>
         </div>
@@ -68,4 +73,28 @@
         var loadImg = windowURL.createObjectURL(document.getElementById(inputNames).files[0]);
         document.getElementById(imgNames).setAttribute('src',loadImg);
     }
+    function insertMenu() {
+        var cookName = $("#cookName").val()
+        var cookPrice = $("#cookPrice").val()
+        var type = $("#type").val()
+        var img = $("#type").val()
+        $.post("${basePath}/menu/insert",{foodName:cookName,price:cookPrice,flag:type,image:img},function (result) {
+            layer.msg("添加成功",{time:2500},function () {
+                parent.layui.table.reload('test',{page:{curr:1}});
+                parent.layer.closeAll();
+            })
+        })
+    }
+
+
+    $.post("${basePath}/menu/type/select/all",function (result) {
+        $("#type").html('');
+        var data = result.data;
+        var html ='';
+        for (var key in data){
+            var d = data[key];
+            html+=' <option value="'+d.id+'">'+d.name+'</option>'
+        }
+        $("#type").append(html);
+    })
 </script>

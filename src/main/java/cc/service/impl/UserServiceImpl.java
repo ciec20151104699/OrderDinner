@@ -4,6 +4,8 @@ import cc.entity.dao.UserMapper;
 import cc.entity.model.User;
 import cc.entity.model.UserExample;
 import cc.service.UserService;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -39,5 +41,16 @@ public class UserServiceImpl implements UserService {
             flag = false;
         }
         return flag;
+    }
+
+    @Override
+    public PageInfo<User> userPageInfo(Integer pageNum, Integer pageSize, String name) {
+        PageHelper.startPage(pageNum,pageSize);
+        UserExample userExample = new UserExample();
+        UserExample.Criteria criteria = userExample.createCriteria();
+        if (name!=null) {
+            criteria.andNameLike("%"+name+"%");
+        }
+        return new PageInfo<User>(userMapper.selectByExample(userExample));
     }
 }
