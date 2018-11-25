@@ -1,15 +1,27 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="cc.entity.dao.UserMenuMapper" >
-  <resultMap id="BaseResultMap" type="cc.entity.model.UserMenu" >
-    <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="user_id" property="userId" jdbcType="INTEGER" />
-    <result column="menu_id" property="menuId" jdbcType="INTEGER" />
-    <result column="update_time" property="updateTime" jdbcType="BIGINT" />
-    <result column="flag" property="flag" jdbcType="INTEGER" />
-    <result column="data_day" property="dataDay" jdbcType="BIGINT" />
-  </resultMap>
-<select id="">
+<mapper namespace="cc.entity.dao.EX_UserMenuMapper">
+    <resultMap id="BaseResultMap" type="cc.entity.model.UserMenu">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="user_id" property="userId" jdbcType="INTEGER"/>
+        <result column="menu_id" property="menuId" jdbcType="INTEGER"/>
+        <result column="update_time" property="updateTime" jdbcType="BIGINT"/>
+        <result column="flag" property="flag" jdbcType="INTEGER"/>
+        <result column="data_day" property="dataDay" jdbcType="BIGINT"/>
+    </resultMap>
 
-</select>
+    <select id="userOrder" resultType="map">
+
+
+        SELECT user.`name` AS userName,menu.`food_name` AS foodName,user_menu.`update_time` AS
+        updateTime,user_menu.`data_day` AS dataDay ,menu.`image`,menu.price,menu_type.name AS typeName
+        FROM user_menu
+        INNER JOIN `user` ON user.`id` = user_menu.`user_id`
+        INNER JOIN menu ON menu.id =user_menu.`menu_id`
+        INNER JOIN menu_type ON menu.flag = menu_type.id
+        <if test="id==null">
+            WHERE user.`id`=#{id}
+        </if>
+        ORDER BY updateTime DESC
+    </select>
 </mapper>

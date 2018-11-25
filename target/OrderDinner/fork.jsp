@@ -9,6 +9,8 @@
     <title>Title</title>
     <link rel="stylesheet" href="${basePath}/plugins/common/common.css"/>
     <script src="${basePath}/plugins/common/jquery.js"></script>
+    <link rel="stylesheet" media="screen" href="${basePath}/plugins/layui/css/modules/layer/default/layer.css">
+    <script src="${basePath}/plugins/layui/lay/modules/layer.js"></script>
     <style>
         body {
             background: #eee;
@@ -349,7 +351,7 @@
 <body>
 <header>
     <div class="inner">
-        <div class="logo">订</div>
+        <div class="logo"><a href="fork.jsp">订</a></div>
         <c:if test="${sessionScope.user==null}">
             <div class="user">
                 [
@@ -366,14 +368,14 @@
         </c:if>
         <div class="log_msg">
             <c:if test="${sessionScope.user!=null}">
-                <a href="myOrder.html">我的订单</a>|
+                <a href="myOrder.jsp">我的订单</a>|
             </c:if>
 
             <c:if test="${sessionScope.user.flag==0}">
                 <a href="${basePath}/index.jsp">管理员</a>
             </c:if>
             <c:if test="${sessionScope.user!=null}">|
-                <a href="">退出</a>
+                <a href="${basePath}/user/invalidate">退出</a>
             </c:if>
         </div>
     </div>
@@ -382,8 +384,8 @@
 <div class="search">
     <div class="inner">
         <div class="border_input">
-            <input id="search" name="search" type="text" placeholder="请输入菜品名称"/>
-            <input id="btn" type="button" value="搜索"/>
+            <%--<input id="search" name="search" type="text" placeholder="请输入菜品名称"/>--%>
+            <%--<input id="btn" type="button" value="搜索"/>--%>
             <div class="shop" id="shop">
                 <span id="shop_num">0</span>
                 <div class="shop_tit">购物车&nbsp;</div>
@@ -425,37 +427,43 @@
     $(function () {
         run()
     })
-    // let login=true;
-    // if(login==true){
-    //     $(".log_msg").show();
-    //     $(".user").hide();
-    // }else{
-    //     $(".log_msg").hide();
-    //     $(".user").show();
-    // }
+
+
     let counter = 0;
-    let typeData = [
-        {
-            id: 1,
-            name: "主食"
-        },
-        {
-            id: 2,
-            name: "今日特卖"
-        },
-        {
-            id: 3,
-            name: "热菜"
-        },
-        {
-            id: 4,
-            name: "饮料"
-        },
-        {
-            id: 5,
-            name: "凉菜"
+    // let typeData=[
+    //     {id:1,
+    //         name:"主食"
+    //     },
+    //     {id:2,
+    //         name:"今日特卖"
+    //     },
+    //     {
+    //         id:3,
+    //         name:"热菜"
+    //     },
+    //     {
+    //         id:4,
+    //         name:"饮料"
+    //     },
+    //     {
+    //         id:5,
+    //         name:"凉菜"
+    //     }
+    // ]
+    $.ajaxSetup({
+        async: false //取消异步
+    });
+    let typeData = [];
+    $.post("${basePath}/menu/type/select/all", {}, function (result) {
+        var list = result.data;
+
+        for (var index in list) {
+            typeData[index] = {
+                id: list[index].id,
+                name: list[index].name
+            }
         }
-    ]
+    })
     let str = ""
     for (let i = 0; i < typeData.length; i++) {
         if (i == 0) {
@@ -466,31 +474,46 @@
         }
     }
     $("#type").html(str)
+    $.ajaxSetup({
+        async: false //取消异步
+    });
+    let data = [];
+    $.post("${basePath}/menu/type/menu", {}, function (result) {
+        var list = result.data;
+        for (var index in list) {
+            data[index] = {
+                id: list[index].id,
+                name: list[index].foodName,
+                times: "",
+                typeId: list[index].flag,
+                imgSrc: "${basePath}/" + list[index].image,
+                price: list[index].price,
 
-    let data = [
-        {
-            id: 1,
-            name: "打卤面",
-            times: "",
-            typeId: 1,
-            imgSrc: "./img/kfc.jpg",
-            price: "12.70",
-            note: "这是一道神奇的菜神奇的我也不知道为什么要用肯德基的图片对了这事测试数据所以无所谓了"
-        },
-        {id: 2, name: "打卤面2", times: "", typeId: 1, imgSrc: "img/kfc.jpg", price: "12.70", note: ""},
-        {id: 3, name: "打卤面3", times: "", typeId: 1, imgSrc: "img/kfc.jpg", price: "12.70", note: ""},
-        {id: 4, name: "打卤面12", times: "", typeId: 1, imgSrc: "img/kfc.jpg", price: "12.70", note: ""},
-        {id: 5, name: "打卤面312", times: "", typeId: 1, imgSrc: "img/kfc.jpg", price: "12.70", note: ""},
-        {id: 6, name: "打卤面321", times: "", typeId: 1, imgSrc: "img/kfc.jpg", price: "12.70", note: ""},
-        {id: 7, name: "打卤面231", times: "", typeId: 2, imgSrc: "img/bkg.jpg", price: "12.70", note: ""},
-        {id: 8, name: "打卤面1", times: "", typeId: 2, imgSrc: "img/kfc.jpg", price: "12.70", note: ""},
-        {id: 9, name: "打卤面123", times: "", typeId: 2, imgSrc: "img/kfc.jpg", price: "12.70", note: ""},
-        {id: 10, name: "打卤面32", times: "", typeId: 2, imgSrc: "img/bkg.jpg", price: "12.70", note: ""},
-        {id: 11, name: "打卤面1", times: "", typeId: 2, imgSrc: "img/kfc.jpg", price: "12.70", note: ""},
-        {id: 12, name: "打卤面32", times: "", typeId: 2, imgSrc: "img/bkg.jpg", price: "12.70", note: ""},
-        {id: 13, name: "打卤面11", times: "", typeId: 3, imgSrc: "img/kfc.jpg", price: "12.70", note: ""},
-        {id: 14, name: "打卤面23", times: "", typeId: 4, imgSrc: "img/kfc.jpg", price: "12.70", note: ""},
-    ]
+                note: "",
+                // name:list[index].name,
+                // name:list[index].name
+            }
+        }
+    })
+    console.log(data);
+    // console.log(data);
+    // let cc=[
+    //     // {id:1, name:"打卤面", times:"", typeId:1, imgSrc:"./img/kfc.jpg", price:"12.70", note:"这是一道神奇的菜神奇的我也不知道为什么要用肯德基的图片对了这事测试数据所以无所谓了"},
+    //     {id:2, name:"打卤面2", times:"", typeId:1, imgSrc:"img/kfc.jpg", price:"12.70", note:""},
+    //     {id:3, name:"打卤面3", times:"",typeId:1, imgSrc:"img/kfc.jpg", price:"12.70", note:""},
+    //     {id:4, name:"打卤面12", times:"",typeId:1, imgSrc:"img/kfc.jpg", price:"12.70", note:""},
+    //     {id:5, name:"打卤面312", times:"",typeId:1, imgSrc:"img/kfc.jpg", price:"12.70", note:""},
+    //     {id:6, name:"打卤面321", times:"",typeId:1, imgSrc:"img/kfc.jpg", price:"12.70", note:""},
+    //     {id:7, name:"打卤面231", times:"",typeId:2, imgSrc:"img/bkg.jpg", price:"12.70", note:""},
+    //     {id:8, name:"打卤面1", times:"",typeId:2, imgSrc:"img/kfc.jpg", price:"12.70", note:""},
+    //     {id:9, name:"打卤面123", times:"",typeId:2, imgSrc:"img/kfc.jpg", price:"12.70", note:""},
+    //     {id:10, name:"打卤面32", times:"",typeId:2, imgSrc:"img/bkg.jpg", price:"12.70", note:""},
+    //     {id:11, name:"打卤面1", times:"",typeId:2, imgSrc:"img/kfc.jpg", price:"12.70", note:""},
+    //     {id:12, name:"打卤面32", times:"",typeId:2, imgSrc:"img/bkg.jpg", price:"12.70", note:""},
+    //     {id:13, name:"打卤面11", times:"",typeId:3, imgSrc:"img/kfc.jpg", price:"12.70", note:""},
+    //     {id:14, name:"打卤面23", times:"",typeId:4, imgSrc:"img/kfc.jpg", price:"12.70", note:""},
+    // ]
+    // console.log(cc);
     $(".type_msg").click(function () {
         $(".type_msg").removeClass("type_msg_first")
         $(this).addClass("type_msg_first");
@@ -554,8 +577,45 @@
             $(this).prev().html(num2)
         }
     })
+    <%--function shop() {--%>
+        <%--for (let i = 0; i < data.length; i++) {--%>
+            <%--if (data[i].times !== 0 && data[i].times !== "") {--%>
+                <%--for (var i = 0; i < data[i].times; i++) {--%>
+                    <%--$.post("${basePath}/order/user/insert",{menuId:data[i].id})--%>
+                <%--}--%>
+            <%--}--%>
+        <%--}--%>
+        <%--layer.msg("付款成功",{time:2500},function () {--%>
+            <%--window.location.reload(true);--%>
+        <%--})--%>
+    <%--}--%>
 
-    $("#shop").mouseover(function () {
+    function shop() {
+        var flag=0;
+        for (let i = 0; i < data.length; i++) {
+            if (data[i].times !== 0 && data[i].times !== "") {
+                for (var j = 0; j < data[i].times; j++) {
+                    $.post("${basePath}/order/user/insert",{menuId:data[i].id},function (result) {
+                        var code=result.code;
+                        flag=code;
+                    })
+                }
+            }
+        }
+        if (flag==0) {
+            layer.msg("付款成功", {time: 2500}, function () {
+                window.location.reload(true);
+            })
+        }else{
+            layer.msg("请先登录", {time: 2500}, function () {
+                window.location.reload(true);
+            })
+        }
+    }
+
+    $("#shop").mouseenter(function () {
+
+
         let dom = $(this).find(".shop_con")
         $(this).find(".shop_con").show();
         let strShop = "";
@@ -576,7 +636,7 @@
                     dom.html(strShop);
                     dom.append("<div class='shop_pay'>" +
                         "<div class='shop_txt'>您一共购买了" + counter + "件商品，共消费" + allPrice + "元</div> " +
-                        "<div class='pay_for'>付款￥" + allPrice + "</div> " +
+                        "<div class='pay_for' id='pay_for' onclick='shop()'> 付款￥" + allPrice + "</div> " +
                         "</div>")
                 }
             }
@@ -584,7 +644,7 @@
         }
 
     })
-    $("#shop").mouseout(function () {
+    $("#shop").mouseleave(function () {
         $(".shop_con").hide();
     })
     $(window).scroll(function () {
@@ -596,6 +656,11 @@
 
         }
     })
+
+
+
+
+
 </script>
 </body>
 </html>
