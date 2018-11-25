@@ -19,7 +19,7 @@
         INNER JOIN `user` ON user.`id` = user_menu.`user_id`
         INNER JOIN menu ON menu.id =user_menu.`menu_id`
         INNER JOIN menu_type ON menu.flag = menu_type.id
-        <if test="id==null">
+        <if test="id!=null">
             WHERE user.`id`=#{id}
         </if>
         ORDER BY updateTime DESC

@@ -46,6 +46,19 @@ public class OrderController {
         return jsonObject.toString();
     }
     @ResponseBody
+    @RequestMapping("/user/order/all" )
+    public String orderAllIndex(HttpServletRequest request){
+        String pageNum = request.getParameter("page");
+        String pageSize = request.getParameter("limit");
+        PageInfo<Map<String, Object>> order = orderService.findOrder(Integer.parseInt(pageNum), Integer.parseInt(pageSize), null);
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("code", 0);
+        jsonObject.put("msg", "");
+        jsonObject.put("count", order.getTotal());
+        jsonObject.put("data", order.getList());
+        return jsonObject.toString();
+    }
+    @ResponseBody
     @RequestMapping("/user/finish" )
     public ResultEntity finishIndex(HttpServletRequest request){
         orderService.finshOrder(System.currentTimeMillis());

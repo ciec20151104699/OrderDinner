@@ -38,7 +38,7 @@ public class OrderServiceImpl implements OrderService{
     }
 
     @Override
-    public PageInfo<Map<String,Object>> findOrder(Integer pageNum, Integer pageSize, int userId) {
+    public PageInfo<Map<String,Object>> findOrder(Integer pageNum, Integer pageSize, Integer userId) {
         PageHelper.startPage(pageNum,pageSize);
 
         List<Map<String,Object>> dataList = ex_userMenuMapper.userOrder(userId);

@@ -11,7 +11,7 @@ public interface OrderService {
     Map<String,List<UserMenu>> findShop(Integer pageNum, Integer pageSize, int userId);
 
     //    查看订单
-    PageInfo<Map<String,Object>> findOrder(Integer pageNum, Integer pageSize, int userId);
+    PageInfo<Map<String,Object>> findOrder(Integer pageNum, Integer pageSize, Integer userId);
 
     //    添加菜品
     int insertFoodKind(UserMenu userMenu);

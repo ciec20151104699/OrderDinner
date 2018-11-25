@@ -11,7 +11,7 @@
         var table = layui.table;
         table.render({
             elem: '#test'
-            , url: '${basePath}/order/user/order' //数据接口
+            , url: '${basePath}/order/user/order/all' //数据接口
             , page: true //开启分页
             , cellMinWidth: 80 //全局定义常规单元格的最小宽度，layui 2.2.1 新增
             , cols: [[

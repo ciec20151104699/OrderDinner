@@ -65,7 +65,7 @@ public class MenuServiceImpl implements MenuService {
     }
 
     @Override
-    public PageInfo<MenuType> pageInfoMentType(Integer pageSize, Integer pageNum, String typeName) {
+    public PageInfo<MenuType> pageInfoMentType(Integer pageNum, Integer pageSize, String typeName) {
         PageHelper.startPage(pageNum, pageSize);
         MenuTypeExample menuTypeExample = new MenuTypeExample();
         menuTypeExample.createCriteria().andNameLike(typeName);
