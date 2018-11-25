@@ -19,7 +19,7 @@
         .register h1{ width: 100%;text-align: center; height: 50px; line-height: 50px;  font-size: 24px; color: #fff; }
         .register p{ height: 40px; line-height: 40px; width:100%; margin-top: 30px; }
         .register label{ text-align: right; color: #fff; margin-left: 20px; margin-right: 10px;font-size: 16px; width: 80px; height: 30px;margin-top: 7px;  display:inline-block;float: left; }
-        .register input{ font-size: 16px; color: #fff; box-sizing: border-box; outline: none; background: none; width:200px; height: 30px;border: none; border-bottom: 1px solid #fff;display:inline-block;float: left; margin-top:5px;line-height: 30px; padding: 0 10px;  }
+        .register input{ font-size: 16px; color: #fff; box-sizing: border-box; outline: none; background: none; width:200px; height: 30px;border: none; border-bottom: 1px solid #fff;display:inline-block;/*float: left;*/ margin-top:5px;line-height: 30px; padding: 0 10px;  }
         .register button{ width: 90%; margin-left: 5%; border: none; background: #fff; color: rgb(0,43,90);cursor: pointer; border-radius: 5px; height: 40px;line-height: 40px;  }
         .footer { position: absolute;bottom: 0; left: 0; height: 30px; line-height: 30px; width: 100%; font-size: 16px; text-align: center; color: #fff; font-family: KAITI;}
     </style>
@@ -30,7 +30,7 @@
     <h1>用户注册</h1>
     <p><label>账　　号</label><input type="text" value="" placeholder="请输入用户名" id="username"></p>
     <p><label>密　　码</label><input type="password" value="" placeholder="请输入注册密码"  id="password"></p>
-    <p><label>性　　别</label><input type="radio" value="1" placeholder=""  name="sex">男<input type="radio" value="0" name="sex" >女</p>
+    <p><label>性　　别</label><input type="radio" value="1" placeholder=""  name="sex" style="width: 20px"><span style="color: #fff;">男</span><input type="radio" value="0" name="sex"  style="width: 20px" ><span style="color: #fff;">女</span></p>
     <p><label>昵    称</label><input type="text" value="" placeholder="请输入昵称"  id="name"></p>
     <p><label>确认密码</label><input type="password" value="" placeholder="请输入注册密码"  id="passwords"></p>
     <p><button onclick="login()">注册</button></p>

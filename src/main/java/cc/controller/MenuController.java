@@ -125,4 +125,9 @@ public class MenuController {
     public ResultEntity menuTypeAll(HttpServletRequest request){
         return ResultEntity.success(menuService.menuTypeList());
     }
+    @ResponseBody
+    @RequestMapping("/type/menu")
+    public ResultEntity menuByType(HttpServletRequest request){
+        return ResultEntity.success(menuService.menuList());
+    }
 }

@@ -29,8 +29,22 @@
                 {field: 'userName', title: '账号'}
                 , {field: 'name', title: '用户名'}
                 , {field: 'password', title: '密码'}
-                , {field: 'sex', title: '性别'}
-                , {field: 'flag', title: '身份'}
+                , {field: 'sex', title: '性别',templet:function (d) {
+                        if (d.sex==0){
+                            return"女";
+                        }else{
+                            return"男";
+                        }
+
+                    }}
+                , {field: 'flag', title: '身份',templet:function (d) {
+                        if (d.flag==0){
+                            return"商家";
+                        }else{
+                            return"用户";
+                        }
+
+                    }}
             ]]
         });
     });

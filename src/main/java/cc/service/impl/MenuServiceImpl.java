@@ -77,4 +77,10 @@ public class MenuServiceImpl implements MenuService {
     public List<MenuType> menuTypeList() {
         return menuTypeMapper.selectByExample(new MenuTypeExample());
     }
+
+    @Override
+    public List<Menu> menuList() {
+
+        return menuMapper.selectByExample(new MenuExample());
+    }
 }

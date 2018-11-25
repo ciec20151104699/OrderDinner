@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 @Controller
 @RequestMapping("/user")
@@ -22,13 +23,13 @@ public class UserController {
 
     @RequestMapping(value = "/login/index", method = RequestMethod.GET)
     public String loginIndexView(HttpServletRequest request, Model model) {
-        System.out.println("123");
+
         return "/login";
     }
 
     @RequestMapping(value = "/register", method = RequestMethod.GET)
     public String register(HttpServletRequest request, Model model) {
-        System.out.println("123");
+
         return "/register";
     }
 
@@ -85,5 +86,13 @@ public class UserController {
         jsonObject.put("count", userPageInfo.getTotal());
         jsonObject.put("data", userPageInfo.getList());
         return jsonObject.toString();
+    }
+
+    @RequestMapping("/invalidate")
+    public String invalidate(HttpServletRequest request, Model model) {
+
+        HttpSession session = request.getSession();
+      session.invalidate();
+        return "fork";
     }
 }

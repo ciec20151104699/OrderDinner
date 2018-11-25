@@ -36,7 +36,7 @@
                 {id:2,name:"菜品管理",pId:1,menuUrl:"admin/shop/cook/show.jsp"},
                 {id:4,name:"订单管理",pId:0},
                 {id:5,name:"已完成",pId:4,menuUrl:"admin/order/ok/show.jsp"},
-                {id:6,name:"未完成",pId:4,menuUrl:"admin/order/ok/show.jsp"},
+//                {id:6,name:"未完成",pId:4,menuUrl:"admin/order/no/show.jsp"},
                 {id:9,name:"系统管理",pId:0},
                 {id:11,name:"用户管理",pId:9,menuUrl:"admin/system/user/show.jsp"},
 
@@ -79,14 +79,36 @@
 </head>
 <body>
 <header>
-    <div class="logo">订</div>
-    <div class="user">
-        [
-        <a href="#">登陆</a>
-        |
-        <a href="#">注册</a>
-        ]
-    </div>
+    <div class="logo"><a href="fork.jsp">订</a></div>
+
+
+    <c:if test="${sessionScope.user==null}">
+        <div class="user">
+            [
+            <a onclick="loginView()">登陆</a>
+            |
+            <a href="${basePath}/user/register">注册</a>
+            ]
+        </div>
+    </c:if>
+    <c:if test="${sessionScope.user!=null}">
+        <a>[
+        <span>你好！${sessionScope.user.name}</span>
+            ]</a>
+        <div class="user">
+            <c:if test="${sessionScope.user!=null}">
+                <a href="myOrder.jsp">我的订单</a>|
+            </c:if>
+
+            <c:if test="${sessionScope.user.flag==0}">
+                <a href="${basePath}/index.jsp">管理员</a>
+            </c:if>
+            <c:if test="${sessionScope.user!=null}">|
+                <a href="${basePath}/user/invalidate">退出</a>
+            </c:if>
+        </div>
+    </c:if>
+
 </header>
 <div class="menu" id="menu" data-name="treeMenu">
 

@@ -11,16 +11,18 @@ public interface MenuService {
 
     int deleteMenu(int id);
 
-    int updateMenu(int id,Menu menu);
+    int updateMenu(int id, Menu menu);
 
     Menu selectMenuById(int id);
 
-    PageInfo<Menu> menuList(int pageSize,int pageNum,String flag,String name);
+    PageInfo<Menu> menuList(int pageSize, int pageNum, String flag, String name);
 
     int addMenuType(MenuType menu);
 
-    PageInfo<MenuType> pageInfoMentType(Integer pageSize,Integer pageNum,String typeName);
+    PageInfo<MenuType> pageInfoMentType(Integer pageSize, Integer pageNum, String typeName);
 
     List<MenuType> menuTypeList();
+
+    List<Menu> menuList();
 
 }
